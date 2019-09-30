@@ -1,0 +1,14 @@
+version: '3'
+services:
+  attak:
+    build:
+      context: ./kali/
+      dockerfile: Dockerfile
+    image: attak-image
+    tty: true
+    stdin_open: true
+    networks:
+      - internal
+
+networks:
+  internal:
