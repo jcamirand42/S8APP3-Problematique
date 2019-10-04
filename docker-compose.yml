@@ -1,14 +1,34 @@
 version: '3'
 services:
-  attak:
+  ms:
     build:
-      context: ./kali/
+      context: ./attak
       dockerfile: Dockerfile
-    image: attak-image
+    ports:
+      - 4444:4444
     tty: true
-    stdin_open: true
     networks:
-      - internal
+      - default
+
+  samba:
+    image: vulhub/samba:4.6.3
+    networks:
+      - default
+    volumes:
+    - ./samba/smb.conf:/usr/local/samba/etc/smb.conf
+    tty: yes
+    restart: always
+
+  target:
+    image: pgarneau/app3
+    tty: true
+    networks:
+      - default
 
 networks:
-  internal:
+  default:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet:  10.103.0.1/24
