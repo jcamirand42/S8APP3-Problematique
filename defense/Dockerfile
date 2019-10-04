@@ -25,6 +25,5 @@ RUN sudo curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master
 ENV PATH="/opt/metasploit-framework/bin:${PATH}"
 
 RUN sudo chmod +x test.sh
-# CMD ["smbd -D && ./test.sh"]
+
 CMD ["./test.sh"]
-# CMD ["/usr/local/samba/sbin/smbd -D"]

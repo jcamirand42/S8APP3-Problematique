@@ -28,8 +28,8 @@ sudo rm /etc/proftpd/proftpd.conf
 cp /proftpd.conf /etc/proftpd/proftpd.conf
 sudo useradd admin
 echo "admin:admin" | sudo chpasswd
-sudo usermod -m -d /var/www/ admin
-mkdir /var/www
+sudo usermod -m -d /home/share admin
+mkdir /home/share
 sudo service proftpd restart
 
 cd /
