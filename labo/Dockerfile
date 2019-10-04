@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 
-ADD ./test.sh test.sh
-ADD ./proftpd.conf proftpd.conf
+COPY ./test.sh test.sh
+COPY ./proftpd.conf proftpd.conf
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     build-essential \
@@ -12,6 +12,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     tripwire \
     vim \
     proftpd 
+
+COPY ./twpol.txt /etc/tripwire/twpol.txt
 
 RUN adduser --disabled-password --gecos '' docker
 RUN adduser docker sudo
