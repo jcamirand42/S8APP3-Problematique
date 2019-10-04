@@ -10,17 +10,8 @@ services:
     networks:
       - default
 
-  samba:
-    image: vulhub/samba:4.6.3
-    networks:
-      - default
-    volumes:
-    - ./samba/smb.conf:/usr/local/samba/etc/smb.conf
-    tty: yes
-    restart: always
-
   target:
-    image: pgarneau/app3
+    image: pgarneau/defense
     tty: true
     networks:
       - default
